@@ -5,7 +5,7 @@ pluginManagement {
     }
 }
 
-rootProject.name = 'SSBOneBlock'
+rootProject.name = 'SSBOneBlock-Nether'
 
 include 'NMS'
 include 'NMS:v1_8_R3'

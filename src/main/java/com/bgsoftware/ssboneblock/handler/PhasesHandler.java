@@ -69,7 +69,7 @@ public final class PhasesHandler {
         Action action = phaseData.getAction(islandPhaseData.getPhaseBlock());
 
         Location oneBlockLocation = plugin.getSettings().blockOffset.applyToLocation(
-                island.getCenter(World.Environment.NORMAL).subtract(0.5, 0, 0.5));
+                island.getCenter(World.Environment.NETHER).subtract(0.5, 0, 0.5));
 
         if (action == null) {
             int nextPhaseLevel = islandPhaseData.getPhaseLevel() + 1 < this.phaseData.length ?
@@ -116,7 +116,7 @@ public final class PhasesHandler {
         if (phaseLevel >= phaseData.length)
             return false;
 
-        IslandPhaseData islandPhaseData = new IslandPhaseData(phaseLevel, 0);
+        IslandPhaseData islandPhaseData = new IslandPhaseData(phaseLevel, 0, dataStore.getCandyFactoryLevel(island));
         this.dataStore.setPhaseData(island, islandPhaseData);
 
         runNextAction(island, player);
@@ -131,7 +131,7 @@ public final class PhasesHandler {
         if (phaseData.getAction(phaseBlock) == null)
             return false;
 
-        this.dataStore.setPhaseData(island, new IslandPhaseData(islandPhaseData.getPhaseLevel(), phaseBlock));
+        this.dataStore.setPhaseData(island, new IslandPhaseData(islandPhaseData.getPhaseLevel(), phaseBlock, dataStore.getCandyFactoryLevel(island)));
         runNextAction(island, player);
 
         return true;

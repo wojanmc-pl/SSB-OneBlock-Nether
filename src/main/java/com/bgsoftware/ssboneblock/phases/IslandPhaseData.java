@@ -4,10 +4,12 @@ public final class IslandPhaseData {
 
     private final int phaseLevel;
     private final int phaseBlock;
+    private int candyFactoryLevel;
 
-    public IslandPhaseData(int phaseLevel, int phaseBlock) {
+    public IslandPhaseData(int phaseLevel, int phaseBlock, int candyFactoryLevel) {
         this.phaseLevel = phaseLevel;
         this.phaseBlock = phaseBlock;
+        this.candyFactoryLevel = candyFactoryLevel;
     }
 
     public int getPhaseLevel() {
@@ -18,12 +20,20 @@ public final class IslandPhaseData {
         return phaseBlock;
     }
 
+    public int getCandyFactoryLevel() {
+        return candyFactoryLevel;
+    }
+
+    public void setCandyFactoryLevel(int candyFactoryLevel) {
+        this.candyFactoryLevel = candyFactoryLevel;
+    }
+
     public IslandPhaseData nextBlock() {
-        return new IslandPhaseData(phaseLevel, phaseBlock + 1);
+        return new IslandPhaseData(phaseLevel, phaseBlock + 1, 0);
     }
 
     public IslandPhaseData nextPhase() {
-        return new IslandPhaseData(phaseLevel + 1, 0);
+        return new IslandPhaseData(phaseLevel + 1, 0, 0);
     }
 
 }

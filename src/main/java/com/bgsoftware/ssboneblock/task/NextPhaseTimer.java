@@ -34,7 +34,7 @@ public final class NextPhaseTimer extends BukkitRunnable {
         this.onFinish = onFinish;
 
         Location oneBlockLocation = plugin.getSettings().blockOffset.applyToLocation(
-                island.getCenter(World.Environment.NORMAL).subtract(0.5, 0, 0.5));
+                island.getCenter(World.Environment.NETHER).subtract(0.5, 0, 0.5));
 
         for (String name : plugin.getSettings().timerFormat) {
             Hologram hologram = createHologram(oneBlockLocation, this.holograms.size());
@@ -71,7 +71,7 @@ public final class NextPhaseTimer extends BukkitRunnable {
             if (!hologram.getHandle().isValid()) {
                 if (oneBlockLocation == null) {
                     oneBlockLocation = plugin.getSettings().blockOffset.applyToLocation(
-                            island.getCenter(World.Environment.NORMAL).subtract(0.5, 0, 0.5));
+                            island.getCenter(World.Environment.NETHER).subtract(0.5, 0, 0.5));
                 }
 
                 hologram = createHologram(oneBlockLocation, hologramCounter);

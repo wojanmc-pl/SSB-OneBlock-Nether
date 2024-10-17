@@ -13,7 +13,7 @@ public class SSBCheckCmd implements SuperiorCommand {
 
     @Override
     public List<String> getAliases() {
-        return Collections.singletonList("oneblock");
+        return Collections.singletonList("oneblock-nether");
     }
 
     @Override

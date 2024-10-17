@@ -39,7 +39,7 @@ public final class OneBlockModule extends PluginModule {
     private NMSAdapter nmsAdapter;
 
     public OneBlockModule() {
-        super("OneBlock", "Ome_R");
+        super("OneBlock-Nether", "Karmelowy");
         instance = this;
     }
 
@@ -57,13 +57,13 @@ public final class OneBlockModule extends PluginModule {
         if (nmsAdapter.getCommandMap().getCommand("oneblock") == null) {
             label = "oneblock";
         } else {
-            label = "ssboneblock";
-            getLogger().warning("The command '/oneblock' is already registered, defaulting to '/ssboneblock' instead.");
+            label = "ssboneblock-nether";
+            getLogger().warning("The command '/oneblock' is already registered, defaulting to '/ssboneblock-nether' instead.");
         }
 
         CommandsHandler commandsHandler = new CommandsHandler(this, label);
         SimpleCommandMap commandMap = nmsAdapter.getCommandMap();
-        commandMap.register("ssboneblock", commandsHandler);
+        commandMap.register("ssboneblock-nether", commandsHandler);
 
         try {
             registerPlaceholders();
@@ -170,7 +170,7 @@ public final class OneBlockModule extends PluginModule {
         if (placeholdersService == null)
             return;
 
-        placeholdersService.registerPlaceholder("oneblock_phase_level", (island, superiorPlayer) -> {
+        placeholdersService.registerPlaceholder("oneblock-nether_phase_level", (island, superiorPlayer) -> {
             if (island == null)
                 return null;
 
@@ -182,7 +182,7 @@ public final class OneBlockModule extends PluginModule {
             return String.valueOf(islandPhaseData.getPhaseLevel() + 1);
         });
 
-        placeholdersService.registerPlaceholder("oneblock_phase_block", (island, superiorPlayer) -> {
+        placeholdersService.registerPlaceholder("oneblock-nether_phase_block", (island, superiorPlayer) -> {
             if (island == null)
                 return null;
 
@@ -194,7 +194,7 @@ public final class OneBlockModule extends PluginModule {
             return String.valueOf(islandPhaseData.getPhaseBlock());
         });
 
-        placeholdersService.registerPlaceholder("oneblock_progress", (island, superiorPlayer) -> {
+        placeholdersService.registerPlaceholder("oneblock-nether_progress", (island, superiorPlayer) -> {
             if (island == null)
                 return null;
 
@@ -211,7 +211,7 @@ public final class OneBlockModule extends PluginModule {
             return String.valueOf(islandPhaseData.getPhaseBlock() * 100 / phaseData.getActionsSize());
         });
 
-        placeholdersService.registerPlaceholder("oneblock_blocks_in_phase", (island, superiorPlayer) -> {
+        placeholdersService.registerPlaceholder("oneblock-nether_blocks_in_phase", (island, superiorPlayer) -> {
             if (island == null)
                 return null;
 
@@ -228,7 +228,7 @@ public final class OneBlockModule extends PluginModule {
             return String.valueOf(phaseData.getActionsSize());
         });
 
-        placeholdersService.registerPlaceholder("oneblock_phase_name", (island, superiorPlayer) -> {
+        placeholdersService.registerPlaceholder("oneblock-nether_phase_name", (island, superiorPlayer) -> {
             if (island == null)
                 return null;
 
@@ -245,7 +245,7 @@ public final class OneBlockModule extends PluginModule {
             return phaseData.getName();
         });
 
-        placeholdersService.registerPlaceholder("oneblock_next_phase_name", (island, superiorPlayer) -> {
+        placeholdersService.registerPlaceholder("oneblock-nether_next_phase_name", (island, superiorPlayer) -> {
             if (island == null)
                 return null;
 

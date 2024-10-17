@@ -15,6 +15,10 @@ public interface DataStore {
 
     void removeIsland(Island island);
 
+    Integer getCandyFactoryLevel(Island island);
+
+    void setCandyFactoryLevel(Island island, Integer newLevel);
+
     void load();
 
     void save();

@@ -12,6 +12,7 @@ import com.google.gson.JsonObject;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -28,7 +29,7 @@ public final class FlatDataStore implements DataStore {
     @Override
     public IslandPhaseData getPhaseData(Island island, boolean createNew) {
         return !createNew ? this.islandPhaseData.get(island.getUniqueId()) :
-                this.islandPhaseData.computeIfAbsent(island.getUniqueId(), v -> new IslandPhaseData(0, 0));
+                this.islandPhaseData.computeIfAbsent(island.getUniqueId(), v -> new IslandPhaseData(0, 0, 0));
     }
 
     @Override
@@ -44,6 +45,19 @@ public final class FlatDataStore implements DataStore {
     @Override
     public void removeIsland(Island island) {
         this.islandPhaseData.remove(island.getUniqueId());
+    }
+
+    @Override
+    public Integer getCandyFactoryLevel(Island island) {
+        return Optional.ofNullable(this.islandPhaseData.get(island.getUniqueId()))
+                .map(IslandPhaseData::getCandyFactoryLevel)
+                .orElse(0);
+    }
+
+    @Override
+    public void setCandyFactoryLevel(Island island, Integer newLevel) {
+        Optional.ofNullable(this.islandPhaseData.get(island.getUniqueId()))
+                .ifPresent(phaseData -> phaseData.setCandyFactoryLevel(newLevel));
     }
 
     @Override
@@ -67,7 +81,8 @@ public final class FlatDataStore implements DataStore {
                         UUID islandUUID = UUID.fromString(islandData.get("island").getAsString());
                         int phaseLevel = islandData.get("phase-level").getAsInt();
                         int phaseBlock = islandData.get("phase-block").getAsInt();
-                        setPhaseData(islandUUID, new IslandPhaseData(phaseLevel, phaseBlock));
+                        int candyFactoryLevel = islandData.get("candy-factory-level").getAsInt();
+                        setPhaseData(islandUUID, new IslandPhaseData(phaseLevel, phaseBlock, candyFactoryLevel));
                     } catch (Throwable error) {
                         OneBlockModule.log("Failed to parse data for element: " + islandDataElement);
                         error.printStackTrace();
@@ -90,6 +105,7 @@ public final class FlatDataStore implements DataStore {
                 jsonObject.addProperty("island", island.getUniqueId() + "");
                 jsonObject.addProperty("phase-level", islandPhaseData.getPhaseLevel());
                 jsonObject.addProperty("phase-block", islandPhaseData.getPhaseBlock());
+                jsonObject.addProperty("candy-factory-level", islandPhaseData.getCandyFactoryLevel());
                 islandData.add(jsonObject);
             }
         }

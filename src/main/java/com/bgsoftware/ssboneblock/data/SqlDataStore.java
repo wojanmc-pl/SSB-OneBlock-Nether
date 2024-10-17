@@ -16,7 +16,7 @@ public final class SqlDataStore implements DataStore {
 
     private static final PersistentDataType<IslandPhaseData> PHASE_DATA_TYPE = new PersistentDataType<>(
             IslandPhaseData.class, PhasePersistentDataTypeContext.getInstance());
-    private static final String PHASE_DATA_KEY = "oneblock:phase_data";
+    private static final String PHASE_DATA_KEY = "oneblock-nether:phase_data";
 
     @Override
     public IslandPhaseData getPhaseData(Island island, boolean createNew) {
@@ -25,7 +25,7 @@ public final class SqlDataStore implements DataStore {
         if (islandPhaseData != null || !createNew)
             return islandPhaseData;
 
-        islandPhaseData = new IslandPhaseData(0, 0);
+        islandPhaseData = new IslandPhaseData(0, 0, 0);
         setPhaseData(island, islandPhaseData);
         return islandPhaseData;
     }
@@ -53,6 +53,16 @@ public final class SqlDataStore implements DataStore {
     @Override
     public void removeIsland(Island island) {
         // Do nothing - data is handled by SSB.
+    }
+
+    @Override
+    public Integer getCandyFactoryLevel(Island island) {
+        return 0;
+    }
+
+    @Override
+    public void setCandyFactoryLevel(Island island, Integer newLevel) {
+
     }
 
     @Override
@@ -84,7 +94,7 @@ public final class SqlDataStore implements DataStore {
         @Override
         public IslandPhaseData deserialize(byte[] bytes) {
             ByteArrayDataInput data = ByteStreams.newDataInput(bytes);
-            return new IslandPhaseData(data.readInt(), data.readInt());
+            return new IslandPhaseData(data.readInt(), data.readInt(), 0);
         }
 
     }

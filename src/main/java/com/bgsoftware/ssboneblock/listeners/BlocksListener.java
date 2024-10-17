@@ -140,7 +140,7 @@ public final class BlocksListener implements Listener {
             return;
 
         Location oneBlockLocation = plugin.getSettings().blockOffset.applyToLocation(
-                island.getCenter(World.Environment.NORMAL).subtract(0.5, 0, 0.5));
+                island.getCenter(World.Environment.NETHER).subtract(0.5, 0, 0.5));
 
         if (oneBlockLocation.getBlockX() >> 4 != chunk.getX() || oneBlockLocation.getBlockZ() >> 4 != chunk.getZ())
             return;
@@ -169,7 +169,7 @@ public final class BlocksListener implements Listener {
             return;
 
         Location oneBlockLocation = plugin.getSettings().blockOffset.applyToLocation(
-                island.getCenter(World.Environment.NORMAL).subtract(0.5, 0, 0.5));
+                island.getCenter(World.Environment.NETHER).subtract(0.5, 0, 0.5));
 
         for (Block block : blockList) {
             if (block.getLocation().equals(oneBlockLocation)) {
@@ -186,7 +186,7 @@ public final class BlocksListener implements Listener {
             return null;
 
         Location oneBlockLocation = plugin.getSettings().blockOffset.applyToLocation(
-                island.getCenter(World.Environment.NORMAL).subtract(0.5, 0, 0.5));
+                island.getCenter(World.Environment.NETHER).subtract(0.5, 0, 0.5));
 
         return oneBlockLocation.equals(location) ? island : null;
     }
