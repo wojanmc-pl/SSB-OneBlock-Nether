@@ -29,11 +29,11 @@ public final class IslandPhaseData {
     }
 
     public IslandPhaseData nextBlock() {
-        return new IslandPhaseData(phaseLevel, phaseBlock + 1, 0);
+        return new IslandPhaseData(phaseLevel, phaseBlock + 1, candyFactoryLevel);
     }
 
     public IslandPhaseData nextPhase() {
-        return new IslandPhaseData(phaseLevel + 1, 0, 0);
+        return new IslandPhaseData(phaseLevel + 1, 0, candyFactoryLevel);
     }
 
 }
