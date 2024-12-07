@@ -1,6 +1,6 @@
 package com.bgsoftware.ssboneblock.listeners;
 
-import com.bgsoftware.ssboneblock.OneBlockModule;
+import com.bgsoftware.ssboneblock.NetherBlockModule;
 import com.bgsoftware.ssboneblock.task.NextPhaseTimer;
 import com.bgsoftware.ssboneblock.utils.WorldUtils;
 import com.bgsoftware.superiorskyblock.api.SuperiorSkyblockAPI;
@@ -34,11 +34,11 @@ import java.util.List;
 
 public final class BlocksListener implements Listener {
 
-    private final OneBlockModule plugin;
+    private final NetherBlockModule plugin;
 
     private boolean fakeBreakEvent = false;
 
-    public BlocksListener(OneBlockModule plugin) {
+    public BlocksListener(NetherBlockModule plugin) {
         this.plugin = plugin;
     }
 

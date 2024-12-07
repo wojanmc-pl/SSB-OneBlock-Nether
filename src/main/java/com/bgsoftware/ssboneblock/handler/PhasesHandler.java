@@ -1,6 +1,6 @@
 package com.bgsoftware.ssboneblock.handler;
 
-import com.bgsoftware.ssboneblock.OneBlockModule;
+import com.bgsoftware.ssboneblock.NetherBlockModule;
 import com.bgsoftware.ssboneblock.actions.Action;
 import com.bgsoftware.ssboneblock.data.DataStore;
 import com.bgsoftware.ssboneblock.lang.LocaleUtils;
@@ -29,11 +29,11 @@ public final class PhasesHandler {
 
     private final Map<String, JsonArray> possibilities = new ConcurrentHashMap<>();
 
-    private final OneBlockModule plugin;
+    private final NetherBlockModule plugin;
     private final DataStore dataStore;
     private final PhaseData[] phaseData;
 
-    public PhasesHandler(OneBlockModule plugin, DataStore dataStore) {
+    public PhasesHandler(NetherBlockModule plugin, DataStore dataStore) {
         this.plugin = plugin;
         this.dataStore = dataStore;
         phaseData = loadData(plugin);
@@ -147,7 +147,7 @@ public final class PhasesHandler {
     }
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
-    private PhaseData[] loadData(OneBlockModule plugin) {
+    private PhaseData[] loadData(NetherBlockModule plugin) {
         File phasesFolder = new File(plugin.getModuleFolder(), "phases");
         File possibilitiesFolder = new File(plugin.getModuleFolder(), "possibilities");
 
@@ -210,7 +210,7 @@ public final class PhasesHandler {
                 JsonArray jsonArray = JsonUtils.parseFile(possibilityFile, JsonArray.class);
                 possibilities.put(possibilityFile.getName().toLowerCase(), jsonArray);
             } catch (Exception ex) {
-                OneBlockModule.log("Failed to parse possibilities " + possibilityFile.getName() + ":");
+                NetherBlockModule.log("Failed to parse possibilities " + possibilityFile.getName() + ":");
                 ex.printStackTrace();
             }
         }
@@ -221,17 +221,17 @@ public final class PhasesHandler {
             File phaseFile = new File(plugin.getModuleFolder() + "/phases", phaseFileName);
 
             if (!phaseFile.exists()) {
-                OneBlockModule.log("Failed find the phase file " + phaseFileName + "...");
+                NetherBlockModule.log("Failed find the phase file " + phaseFileName + "...");
                 continue;
             }
 
-            OneBlockModule.log("Checking " + phaseFileName);
+            NetherBlockModule.log("Checking " + phaseFileName);
 
             try {
                 JsonObject jsonObject = JsonUtils.parseFile(phaseFile, JsonObject.class);
                 PhaseData.fromJson(jsonObject, this, phaseFileName).ifPresent(phaseDataList::add);
             } catch (Exception ex) {
-                OneBlockModule.log("Failed to parse phase " + phaseFile.getName() + ":");
+                NetherBlockModule.log("Failed to parse phase " + phaseFile.getName() + ":");
                 ex.printStackTrace();
             }
         }

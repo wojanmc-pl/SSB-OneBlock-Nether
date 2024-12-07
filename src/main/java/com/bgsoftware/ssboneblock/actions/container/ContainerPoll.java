@@ -1,6 +1,6 @@
 package com.bgsoftware.ssboneblock.actions.container;
 
-import com.bgsoftware.ssboneblock.OneBlockModule;
+import com.bgsoftware.ssboneblock.NetherBlockModule;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import org.bukkit.ChatColor;
@@ -15,7 +15,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public final class ContainerPoll {
 
-    private static final OneBlockModule module = OneBlockModule.getPlugin();
+    private static final NetherBlockModule module = NetherBlockModule.getPlugin();
 
     private final ContainerItem[] items;
     private final int min, max;
@@ -68,7 +68,7 @@ public final class ContainerPoll {
             try {
                 type = Material.valueOf(materialTypeRaw.toUpperCase());
             } catch (IllegalArgumentException error) {
-                OneBlockModule.log("[" + fileName + "] Cannot parse `" + materialTypeRaw + "` to a valid material type.");
+                NetherBlockModule.log("[" + fileName + "] Cannot parse `" + materialTypeRaw + "` to a valid material type.");
                 continue;
             }
 

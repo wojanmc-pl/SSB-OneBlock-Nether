@@ -1,7 +1,7 @@
 package com.bgsoftware.ssboneblock.handler;
 
 import com.bgsoftware.common.config.CommentedConfiguration;
-import com.bgsoftware.ssboneblock.OneBlockModule;
+import com.bgsoftware.ssboneblock.NetherBlockModule;
 import com.bgsoftware.ssboneblock.commands.commands.SSBCheckCmd;
 import com.bgsoftware.ssboneblock.data.DataType;
 import com.bgsoftware.ssboneblock.error.ParsingException;
@@ -30,7 +30,7 @@ public final class SettingsHandler {
     public final boolean phasesLoop;
     public final boolean pistonsInteraction;
 
-    public SettingsHandler(OneBlockModule plugin) {
+    public SettingsHandler(NetherBlockModule plugin) {
         File file = new File(plugin.getModuleFolder(), "config.yml");
 
         if (!file.exists())

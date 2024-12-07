@@ -57,12 +57,12 @@ public final class SqlDataStore implements DataStore {
 
     @Override
     public Integer getCandyFactoryLevel(Island island) {
-        return 0;
+        return this.getPhaseData(island, false).getCandyFactoryLevel();
     }
 
     @Override
     public void setCandyFactoryLevel(Island island, Integer newLevel) {
-
+        this.getPhaseData(island, true).setCandyFactoryLevel(newLevel);
     }
 
     @Override
@@ -88,13 +88,14 @@ public final class SqlDataStore implements DataStore {
             ByteArrayDataOutput data = ByteStreams.newDataOutput();
             data.writeInt(islandPhaseData.getPhaseLevel());
             data.writeInt(islandPhaseData.getPhaseBlock());
+            data.writeInt(islandPhaseData.getCandyFactoryLevel());
             return data.toByteArray();
         }
 
         @Override
         public IslandPhaseData deserialize(byte[] bytes) {
             ByteArrayDataInput data = ByteStreams.newDataInput(bytes);
-            return new IslandPhaseData(data.readInt(), data.readInt(), 0);
+            return new IslandPhaseData(data.readInt(), data.readInt(), data.readInt());
         }
 
     }

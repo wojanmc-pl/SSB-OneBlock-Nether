@@ -1,6 +1,6 @@
 package com.bgsoftware.ssboneblock.commands.commands;
 
-import com.bgsoftware.ssboneblock.OneBlockModule;
+import com.bgsoftware.ssboneblock.NetherBlockModule;
 import com.bgsoftware.superiorskyblock.api.SuperiorSkyblock;
 import com.bgsoftware.superiorskyblock.api.commands.SuperiorCommand;
 import org.bukkit.command.CommandSender;
@@ -53,7 +53,7 @@ public class SSBCheckCmd implements SuperiorCommand {
 
     @Override
     public void execute(SuperiorSkyblock superiorSkyblock, CommandSender sender, String[] args) {
-        CmdCheck.performCheck(OneBlockModule.getPlugin(), sender, args);
+        CmdCheck.performCheck(NetherBlockModule.getPlugin(), sender, args);
     }
 
     @Override

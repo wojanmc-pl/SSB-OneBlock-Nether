@@ -1,6 +1,6 @@
 package com.bgsoftware.ssboneblock.data;
 
-import com.bgsoftware.ssboneblock.OneBlockModule;
+import com.bgsoftware.ssboneblock.NetherBlockModule;
 import com.bgsoftware.ssboneblock.phases.IslandPhaseData;
 import com.bgsoftware.ssboneblock.utils.JsonUtils;
 import com.bgsoftware.superiorskyblock.api.SuperiorSkyblockAPI;
@@ -20,9 +20,9 @@ public final class FlatDataStore implements DataStore {
 
     private final Map<UUID, IslandPhaseData> islandPhaseData = new ConcurrentHashMap<>();
 
-    private final OneBlockModule module;
+    private final NetherBlockModule module;
 
-    public FlatDataStore(OneBlockModule module) {
+    public FlatDataStore(NetherBlockModule module) {
         this.module = module;
     }
 
@@ -84,7 +84,7 @@ public final class FlatDataStore implements DataStore {
                         int candyFactoryLevel = islandData.get("candy-factory-level").getAsInt();
                         setPhaseData(islandUUID, new IslandPhaseData(phaseLevel, phaseBlock, candyFactoryLevel));
                     } catch (Throwable error) {
-                        OneBlockModule.log("Failed to parse data for element: " + islandDataElement);
+                        NetherBlockModule.log("Failed to parse data for element: " + islandDataElement);
                         error.printStackTrace();
                     }
                 }

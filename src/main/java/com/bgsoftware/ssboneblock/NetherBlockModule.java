@@ -28,9 +28,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class OneBlockModule extends PluginModule {
+public final class NetherBlockModule extends PluginModule {
 
-    private static OneBlockModule instance;
+    private static NetherBlockModule instance;
 
     private SuperiorSkyblock plugin;
 
@@ -38,7 +38,7 @@ public final class OneBlockModule extends PluginModule {
     private SettingsHandler settingsHandler;
     private NMSAdapter nmsAdapter;
 
-    public OneBlockModule() {
+    public NetherBlockModule() {
         super("OneBlock-Nether", "Karmelowy");
         instance = this;
     }
@@ -155,7 +155,7 @@ public final class OneBlockModule extends PluginModule {
         instance.getLogger().info(message);
     }
 
-    public static OneBlockModule getPlugin() {
+    public static NetherBlockModule getPlugin() {
         return instance;
     }
 
@@ -260,6 +260,18 @@ public final class OneBlockModule extends PluginModule {
                 return "";
 
             return phaseData.getName();
+        });
+
+        placeholdersService.registerPlaceholder("oneblock-nether_candy_factory_level", (island, superiorPlayer) -> {
+            if (island == null)
+                return null;
+
+            IslandPhaseData islandPhaseData = phasesHandler.getDataStore().getPhaseData(island, false);
+
+            if (islandPhaseData == null)
+                return "0";
+
+            return String.valueOf(islandPhaseData.getCandyFactoryLevel());
         });
 
     }

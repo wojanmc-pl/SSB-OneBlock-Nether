@@ -1,7 +1,7 @@
 package com.bgsoftware.ssboneblock.lang;
 
 import com.bgsoftware.common.config.CommentedConfiguration;
-import com.bgsoftware.ssboneblock.OneBlockModule;
+import com.bgsoftware.ssboneblock.NetherBlockModule;
 import com.bgsoftware.superiorskyblock.api.service.message.IMessageComponent;
 import com.bgsoftware.superiorskyblock.api.service.message.MessagesService;
 import org.bukkit.Bukkit;
@@ -51,10 +51,10 @@ public enum Message {
         messages.put(locale, messageComponent);
     }
 
-    private static final OneBlockModule plugin = OneBlockModule.getPlugin();
+    private static final NetherBlockModule plugin = NetherBlockModule.getPlugin();
 
     public static void reload() {
-        OneBlockModule.log("Loading messages started...");
+        NetherBlockModule.log("Loading messages started...");
         long startTime = System.currentTimeMillis();
 
         File langFolder = new File(plugin.getModuleFolder(), "lang");
@@ -81,7 +81,7 @@ public enum Message {
             try {
                 fileLocale = LocaleUtils.getLocale(fileName);
             } catch (IllegalArgumentException ex) {
-                OneBlockModule.log("&cThe language \"" + fileName + "\" is invalid. Please correct the file name.");
+                NetherBlockModule.log("&cThe language \"" + fileName + "\" is invalid. Please correct the file name.");
                 continue;
             }
 
@@ -104,8 +104,8 @@ public enum Message {
             countMessages = false;
         }
 
-        OneBlockModule.log(" - Found " + messagesAmount + " messages in the language files.");
-        OneBlockModule.log("Loading messages done (Took " + (System.currentTimeMillis() - startTime) + "ms)");
+        NetherBlockModule.log(" - Found " + messagesAmount + " messages in the language files.");
+        NetherBlockModule.log("Loading messages done (Took " + (System.currentTimeMillis() - startTime) + "ms)");
     }
 
 }

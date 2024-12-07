@@ -1,6 +1,6 @@
 package com.bgsoftware.ssboneblock.commands;
 
-import com.bgsoftware.ssboneblock.OneBlockModule;
+import com.bgsoftware.ssboneblock.NetherBlockModule;
 import com.bgsoftware.ssboneblock.commands.commands.CmdCheck;
 import com.bgsoftware.ssboneblock.commands.commands.CmdReload;
 import com.bgsoftware.ssboneblock.commands.commands.CmdSave;
@@ -17,9 +17,9 @@ import java.util.List;
 public final class CommandsHandler extends Command {
 
     private final List<ICommand> subCommands = new ArrayList<>();
-    private final OneBlockModule plugin;
+    private final NetherBlockModule plugin;
 
-    public CommandsHandler(OneBlockModule plugin, String label) {
+    public CommandsHandler(NetherBlockModule plugin, String label) {
         super(label,
                 "Main command for the plugin.",
                 "/" + label + " <command>",

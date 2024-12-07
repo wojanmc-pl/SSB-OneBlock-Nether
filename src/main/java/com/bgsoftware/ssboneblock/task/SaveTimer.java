@@ -1,11 +1,11 @@
 package com.bgsoftware.ssboneblock.task;
 
-import com.bgsoftware.ssboneblock.OneBlockModule;
+import com.bgsoftware.ssboneblock.NetherBlockModule;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public final class SaveTimer extends BukkitRunnable {
 
-    private static OneBlockModule plugin;
+    private static NetherBlockModule plugin;
     private static SaveTimer timer = null;
 
     private SaveTimer() {
@@ -18,7 +18,7 @@ public final class SaveTimer extends BukkitRunnable {
         plugin.getPhasesHandler().getDataStore().save();
     }
 
-    public static void startTimer(OneBlockModule plugin) {
+    public static void startTimer(NetherBlockModule plugin) {
         SaveTimer.plugin = plugin;
         stopTimer();
         new SaveTimer();

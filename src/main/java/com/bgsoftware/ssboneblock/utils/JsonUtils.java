@@ -1,6 +1,6 @@
 package com.bgsoftware.ssboneblock.utils;
 
-import com.bgsoftware.ssboneblock.OneBlockModule;
+import com.bgsoftware.ssboneblock.NetherBlockModule;
 import com.bgsoftware.ssboneblock.actions.Action;
 import com.bgsoftware.ssboneblock.actions.ActionType;
 import com.bgsoftware.ssboneblock.actions.CommandAction;
@@ -131,7 +131,7 @@ public final class JsonUtils {
         try {
             return JsonUtils.getAction(jsonObject, phasesManager, fileName);
         } catch (ParsingException error) {
-            OneBlockModule.log("[" + fileName + "] " + error.getMessage());
+            NetherBlockModule.log("[" + fileName + "] " + error.getMessage());
             error.printStackTrace();
             return Optional.empty();
         }

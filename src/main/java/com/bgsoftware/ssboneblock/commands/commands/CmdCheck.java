@@ -1,6 +1,6 @@
 package com.bgsoftware.ssboneblock.commands.commands;
 
-import com.bgsoftware.ssboneblock.OneBlockModule;
+import com.bgsoftware.ssboneblock.NetherBlockModule;
 import com.bgsoftware.ssboneblock.commands.ICommand;
 import com.bgsoftware.ssboneblock.lang.Message;
 import com.bgsoftware.ssboneblock.phases.IslandPhaseData;
@@ -48,16 +48,16 @@ public final class CmdCheck implements ICommand {
     }
 
     @Override
-    public void perform(OneBlockModule plugin, CommandSender sender, String[] args) {
+    public void perform(NetherBlockModule plugin, CommandSender sender, String[] args) {
         performCheck(plugin, sender, args);
     }
 
     @Override
-    public List<String> tabComplete(OneBlockModule plugin, CommandSender sender, String[] args) {
+    public List<String> tabComplete(NetherBlockModule plugin, CommandSender sender, String[] args) {
         return performTabComplete(args);
     }
 
-    static void performCheck(OneBlockModule plugin, CommandSender sender, String[] args) {
+    static void performCheck(NetherBlockModule plugin, CommandSender sender, String[] args) {
         Island targetIsland;
 
         if (args.length == 1) {

@@ -1,7 +1,7 @@
 package com.bgsoftware.ssboneblock.nms;
 
 import com.bgsoftware.common.nmsloader.config.NMSConfiguration;
-import com.bgsoftware.ssboneblock.OneBlockModule;
+import com.bgsoftware.ssboneblock.NetherBlockModule;
 
 import java.io.File;
 
@@ -9,7 +9,7 @@ public class ModuleNMSConfiguration extends NMSConfiguration {
 
     private final File cacheFolder;
 
-    public ModuleNMSConfiguration(OneBlockModule module) {
+    public ModuleNMSConfiguration(NetherBlockModule module) {
         this.cacheFolder = new File(module.getModuleFolder(), ".cache");
     }
 

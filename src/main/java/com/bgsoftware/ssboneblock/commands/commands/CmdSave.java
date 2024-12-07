@@ -1,6 +1,6 @@
 package com.bgsoftware.ssboneblock.commands.commands;
 
-import com.bgsoftware.ssboneblock.OneBlockModule;
+import com.bgsoftware.ssboneblock.NetherBlockModule;
 import com.bgsoftware.ssboneblock.commands.ICommand;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -41,7 +41,7 @@ public final class CmdSave implements ICommand {
     }
 
     @Override
-    public void perform(OneBlockModule plugin, CommandSender sender, String[] args) {
+    public void perform(NetherBlockModule plugin, CommandSender sender, String[] args) {
         long startTime = System.currentTimeMillis();
         plugin.getJavaPlugin().getServer().getScheduler().runTaskAsynchronously(plugin.getJavaPlugin(), () -> {
             plugin.getPhasesHandler().getDataStore().save();
@@ -50,7 +50,7 @@ public final class CmdSave implements ICommand {
     }
 
     @Override
-    public List<String> tabComplete(OneBlockModule plugin, CommandSender sender, String[] args) {
+    public List<String> tabComplete(NetherBlockModule plugin, CommandSender sender, String[] args) {
         return new ArrayList<>();
     }
 

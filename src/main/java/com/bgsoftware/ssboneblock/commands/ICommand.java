@@ -1,6 +1,6 @@
 package com.bgsoftware.ssboneblock.commands;
 
-import com.bgsoftware.ssboneblock.OneBlockModule;
+import com.bgsoftware.ssboneblock.NetherBlockModule;
 import org.bukkit.command.CommandSender;
 
 import java.util.List;
@@ -19,8 +19,8 @@ public interface ICommand {
 
     int getMaxArgs();
 
-    void perform(OneBlockModule plugin, CommandSender sender, String[] args);
+    void perform(NetherBlockModule plugin, CommandSender sender, String[] args);
 
-    List<String> tabComplete(OneBlockModule plugin, CommandSender sender, String[] args);
+    List<String> tabComplete(NetherBlockModule plugin, CommandSender sender, String[] args);
 
 }

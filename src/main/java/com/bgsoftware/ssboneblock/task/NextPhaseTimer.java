@@ -1,6 +1,6 @@
 package com.bgsoftware.ssboneblock.task;
 
-import com.bgsoftware.ssboneblock.OneBlockModule;
+import com.bgsoftware.ssboneblock.NetherBlockModule;
 import com.bgsoftware.ssboneblock.factory.HologramFactory;
 import com.bgsoftware.superiorskyblock.api.island.Island;
 import com.bgsoftware.superiorskyblock.api.service.hologram.Hologram;
@@ -18,7 +18,7 @@ import java.util.UUID;
 public final class NextPhaseTimer extends BukkitRunnable {
 
     private static final Map<UUID, NextPhaseTimer> timers = new HashMap<>();
-    private static final OneBlockModule plugin = OneBlockModule.getPlugin();
+    private static final NetherBlockModule plugin = NetherBlockModule.getPlugin();
 
     private final List<Hologram> holograms = new LinkedList<>();
     private final Island island;
